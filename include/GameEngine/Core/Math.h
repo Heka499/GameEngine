@@ -62,4 +62,4 @@ public:
     const float* Data() const { return m; }
 };
 
-}}
+}} // namespace GameEngine::Math
