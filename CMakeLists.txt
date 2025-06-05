@@ -20,15 +20,41 @@ endif()
 # Include directories
 include_directories(include)
 
-# Source files
-file(GLOB_RECURSE SOURCES "src/*.cpp")
-file(GLOB_RECURSE HEADERS "include/*.h")
+# Find or fetch Google Test
+find_package(GTest QUIET)
+if (NOT GTest_FOUND)
+    include(FetchContent)
+    FetchContent_Declare(
+        googletest
+        URL https://github.com/google/googletest/archive/03597a01ee50f33f9142fd2d6828e70ecb14b7d7.zip
+    )
+    FetchContent_MakeAvailable(googletest)
+endif()
 
-# Create the executable
-add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
+# Source files for engine library
+file(GLOB_RECURSE ENIGNE_SOURCES "src/Core/*.cpp")
+file(GLOB_RECURSE ENGINE_HEADERS "include/GameEngine/*.h")
 
-# Link libraries
-target_link_libraries(${PROJECT_NAME})
+# Create the engine library
+add_library(GameEngineLib ${ENGINE_SOURCES} ${ENGINE_HEADERS})
+target_include_directories(GameEngineLib PUBLIC include)
+
+# Main executable
+add_executable(GameEngine src/main.cpp)
+target_link_libraries(GameEngine GameEngineLib)
+
+# Test executable
+file(GLOB_RECURSE TEST_SOURCES "tests/*.cpp")
+add_executable(GameEngineTests ${TEST_SOURCES})
+target_link_libraries((GameEngineTests
+    GameEngineLib
+    gtest
+    gtest_main
+))
+
+# Register tests with CTest
+include(GoogleTest)
+gtest_discover_tests(GameEngineTests)
 
 # Copy assets to build directory
 file(COPY assets DESTINATION ${CMAKE_BINARY_DIR})
