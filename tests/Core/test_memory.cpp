@@ -73,7 +73,7 @@ TEST_F(MemoryPoolTest, PoolPtrRAII) {
     
     {
         PoolPtr<TestObject> ptr(pool.Allocate(100), &pool);
-        EXPECT_TRUE(ptr.IsValid());
+        EXPECT_TRUE(ptr.isValid());
         EXPECT_EQ(ptr->value, 100);
         EXPECT_EQ(pool.UsedCount(), 1);
     } // ptr goes out of scope, should auto-deallocate
@@ -90,7 +90,7 @@ TEST_F(MemoryPoolTest, MoveSemantics) {
     };
     
     PoolPtr<TestObject> ptr = createPtr();
-    EXPECT_TRUE(ptr.IsValid());
+    EXPECT_TRUE(ptr.isValid());
     EXPECT_EQ(ptr->value, 200);
     EXPECT_EQ(pool.UsedCount(), 1);
 }
