@@ -9,8 +9,8 @@ class Vector2 {
 public:
     float x, y;
 
-    Vector2() : x(0.0f), y(0.0f) {}
-    Vector2(float x, float y) : x(x), y(y) {}
+    Vector2();
+    Vector2(float x, float y);
 
     Vector2 operator+(const Vector2& other) const;
     Vector2 operator-(const Vector2& other) const;
@@ -27,8 +27,8 @@ class Vector3 {
 public:
     float x, y, z;
 
-    Vector3() : x(0.0f), y(0.0f), z(0.0f) {}
-    Vector3(float x, float y, float z) : x(x), y(y), z(z) {}
+    Vector3();
+    Vector3(float x, float y, float z);
 
     Vector3 operator+(const Vector3& other) const;
     Vector3 operator-(const Vector3& other) const;
