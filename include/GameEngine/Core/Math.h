@@ -39,8 +39,11 @@ public:
     Vector3 operator-(const Vector3& other) const;
     Vector3 operator*(float scalar) const;
     Vector3 operator+=(const Vector3& other);
+    bool operator==(const Vector3& other) const;
+    bool operator!=(const Vector3& other) const;
 
     float Magnitude() const;
+    float length() const; // Alias for Magnitude
     Vector3 Normalized() const;
     float Dot(const Vector3& other) const;
     Vector3 Cross(const Vector3& other) const;
