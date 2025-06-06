@@ -1,0 +1,43 @@
+# Build artifacts
+/build/
+/bin/
+/lib/
+*.o
+*.obj
+*.a
+*.so
+*.dll
+*.exe
+*.lib
+
+# CMake files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CTestTestfile.cmake
+Makefile
+compile_commands.json
+
+# CMake dependencies
+_deps/
+
+# VSCode settings
+.vscode/
+
+# User-specific files
+*.user
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Test binaries and outputs
+/GameEngineTests*
+/GameEngine.exe
+
+# Ignore assets generated in build
+/build/assets/
+
+# Ignore generated test files
+/build/Testing/
