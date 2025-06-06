@@ -11,7 +11,7 @@ class FileSystem {
 public:
     static std::optional<std::string> ReadTextFile(const std::string& filepath);
     static std::optional<std::vector<char>> ReadBinaryFile(const std::string& filepath);
-    static bool WritetextFile(const std::string& filepath, const std::string& content);
+    static bool WriteTextFile(const std::string& filepath, const std::string& content);
     static bool WriteBinaryFile(const std::string& filepath, const std::vector<char>& data);
     static bool FileExists(const std::string& filepath);
     static bool CreateDirectory(const std::string& path);
