@@ -39,7 +39,7 @@ TEST_F(FileSystemTest, TextFileOperations) {
 }
 
 TEST_F(FileSystemTest, BinaryFileOperations) {
-    std::vector<char> binaryData = {'H', 'e', 'l', 'l', 'o', '\0', 0x42, 0xFF};
+    std::vector<char> binaryData = {'H', 'e', 'l', 'l', 'o', '\0', static_cast<char>(0x42), static_cast<char>(0xFF)};
     
     // Test writing
     EXPECT_TRUE(FileSystem::WriteBinaryFile(testBinaryFile, binaryData));
