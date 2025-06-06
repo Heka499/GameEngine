@@ -58,7 +58,7 @@ private:
     MemoryPool<T>* pool;
 
 public:
-    PoolPtr(T* p, MemoryPool<T>* pool) : ptr(p), pool(pool) {}
+    PoolPtr(T* p, MemoryPool<T>* pool_) : ptr(p), pool(pool_) {}
 
     ~PoolPtr() {
         if (ptr && pool) {
