@@ -16,11 +16,16 @@ public:
     Vector2 operator-(const Vector2& other) const;
     Vector2 operator*(float scalar) const;
     Vector2 operator+=(const Vector2& other);
+    bool operator==(const Vector2& other);
+    bool operator!=(const Vector2& other);
 
     float Magnitude() const;
+    // length() is an alias for Magnitude
+    float length() const;
     float MagnitudeSquared() const;
     Vector2 Normalized() const;
     float Dot(const Vector2& other) const;
+    
 };
 
 class Vector3 {
