@@ -54,20 +54,28 @@ private:
     float m[16];
 public:
     Matrix4();
-    Matrix4(float diagonal);
+    Matrix4(const float values[16]);
 
-    static Matrix4 Identity();
-    static Matrix4 Translation(const Vector3& translation);
-    static Matrix4 Scale(const Vector3& scale);
-    static Matrix4 RotationX(float angle);
-    static Matrix4 RotationY(float angle);
-    static Matrix4 RotationZ(float angle);
+    static Matrix4 identity();
+    static Matrix4 translation(float x, float y, float z);
+    static Matrix4 translation(const Vector3& position);
+    static Matrix4 scale(float x, float y, float z);
+    static Matrix4 scale(const Vector3& scale);
+    static Matrix4 scale(float uniform);
+    static Matrix4 rotationX(float angle);
+    static Matrix4 rotationY(float angle);
+    static Matrix4 rotationZ(float angle);
 
     Matrix4 operator*(const Matrix4& other) const;
-    Vector3 operator*(const Vector3& vector) const;
 
-    float* Data() { return m; }
-    const float* Data() const { return m; }
+    float& operator()(int row, int col);
+    const float& operator()(int row, int col) const;
+
+    float* data();
+    const float* data() const;
+
+    Vector3 transformPoint(const Vector3& point) const;
+    Vector3 transformDirection(const Vector3& direction) const;
 };
 
 }} // namespace GameEngine::Math
